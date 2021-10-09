@@ -102,14 +102,14 @@ public class UserDB {
             rs = ps.executeQuery();
             User user = null;
             if (rs.next()) {
-                user = new User();
-                user.setFirstName(rs.getString("FirstName"));
-                user.setLastName(rs.getString("LastName"));
-                user.setEmail(rs.getString("Email"));
+                user = new User(
+                        rs.getString("FirstName"),
+                        rs.getString("LastName"),
+                        rs.getString("Email"));
             }
             return user;
         } catch (SQLException e) {
-           e.printStackTrace();
+            e.printStackTrace();
             return null;
         }
     }
